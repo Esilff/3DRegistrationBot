@@ -34,4 +34,18 @@ bot.on('interactionCreate', async (interaction) => {
         console.log('Status :', status);
         interaction.reply(status);
     }
+    if (interaction.commandName === 'stats') {
+        let points = await open.getOpenPoints(googleApiContext, config.sheet_id, interaction.user.id);
+        if (points < 0) {
+            interaction.reply('The user is not registered');
+            return;
+        }
+        console.log("Points :", points);
+        const embedStatus = new Discord.EmbedBuilder().setTitle(interaction.user.username).setColor('Aqua').
+        setAuthor({name: bot.user.username, iconURL: bot.user.displayAvatarURL()}).
+        setThumbnail(interaction.user.displayAvatarURL()).
+        addFields({name: 'Open points', value: `${points}pts`}).setTimestamp().
+        setFooter({text: bot.user.username, iconURL: bot.user.displayAvatarURL()});
+        interaction.reply({embeds: [embedStatus]});
+    }
 });

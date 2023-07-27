@@ -43,6 +43,10 @@ const commands = [
         required: true
       }
     ]
+  },
+  {
+    name: 'stats',
+    description: 'Display the points of the user'
   }
 ];
 

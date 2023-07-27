@@ -11,11 +11,18 @@ async function addOpenToUser(googleApiContext, spreadsheetId, userId, points) {
     }
     if (userExists) {
         await sheetService.write(googleApiContext, spreadsheetId, "Users", values);
-        console.log("Sheet is written anew");
     }
     return userExists ? 'Points successfully added' : 'The user is not registered';
 }
 
+async function getOpenPoints(googleApiContext, spreadsheetId, userId) {
+    let values = await sheetService.read(googleApiContext, spreadsheetId, "Users");
+    let user = values.filter(value => {
+        return value[0] === userId
+    });
+    return user[0][4] > 0 ? user[0][4] : - 1;
+}
+
 module.exports = {
-    addOpenToUser
+    addOpenToUser, getOpenPoints
 }
