@@ -4,6 +4,7 @@ const config = require("./resources/credentials.json");
 const bot = new Discord.Client({intents});
 const date = new Date();
 const {registerUser} = require('./src/Commands/registration');
+const open = require('./src/Commands/open');
 
 const googleService = require('./src/gapi/connect');
 let googleApiContext;
@@ -24,6 +25,13 @@ bot.on('interactionCreate', async (interaction) => {
         const secondName = interaction.options.get('second-name').value;
         const promotion = interaction.options.get('class').value; //class is not authorized as a variable name
         let status = await registerUser(googleApiContext, config.sheet_id, interaction.user.id,firstName, secondName, promotion);
+        interaction.reply(status);
+    }
+    if (interaction.commandName === 'add-open') {
+        const user = interaction.options.get('user').value;
+        const points = interaction.options.get('points').value;
+        let status = await open.addOpenToUser(googleApiContext, config.sheet_id, user, points);
+        console.log('Status :', status);
         interaction.reply(status);
     }
 });

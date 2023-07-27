@@ -15,16 +15,6 @@ function checkForExistingUser(values, discordId) {
     return user.length > 0;
 }
 
-// function checkForExistingUser(googleApiContext, spreadsheetId, discordId) {
-//     googleApiContext.spreadsheets.values.get({
-//         s
-//     })
-// }
-
-// function checkValidClassName() {
-
-// }
-
 module.exports = {
     registerUser
 };

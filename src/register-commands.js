@@ -25,6 +25,24 @@ const commands = [
         required: true
       }
     ]
+  },
+  {
+    name :'add-open',
+    description: 'Add a given amount of open points to the mentionned user if registered',
+    options: [
+      {
+        name: 'user',
+        description: 'the user that will receive the points',
+        type: ApplicationCommandOptionType.User,
+        required: true
+      },
+      {
+        name: 'points',
+        description: 'the amount of points the user will receive',
+        type: ApplicationCommandOptionType.Number,
+        required: true
+      }
+    ]
   }
 ];
 
