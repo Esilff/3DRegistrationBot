@@ -1,17 +1,10 @@
 {
-  "name": "3dregistrationbot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "run": "node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@googleapis/sheets": "^5.0.1",
-    "discord.js": "^14.11.0"
+    "discord.js": "^14.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "ts-node": "^10.9.1"
   }
 }
